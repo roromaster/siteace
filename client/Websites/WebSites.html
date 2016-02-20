@@ -1,0 +1,32 @@
+<!-- template that displays several website items -->
+<template name="Websites">
+
+		{{#each websites}}
+			{{>website_item}}
+		{{/each}}
+
+
+</template>
+
+<!-- template that displays individual website entries -->
+<template name="website_item">
+
+	<div class="website-item col-xs-6 col-sm-6 col-md-4 col-lg-3">
+		<a href="{{url}}">{{title}}</a>
+		<p>
+			{{description}}
+		</p>
+		<p>
+			By: {{author}}
+		</p>
+		<span>{{when}}</span>
+		<a href="#" class="btn btn-default js-upvote">
+			<span class="glyphicon glyphicon-arrow-up" aria-hidden="true">{{upCount}}</span>
+		</a>
+		<a href="#" class="btn btn-default js-downvote">
+			<span class="glyphicon glyphicon-arrow-down" aria-hidden="true">{{downCount}}</span>
+		</a>
+		<!-- you will be putting your up and down vote buttons in here! -->
+
+	</div>
+</template>
