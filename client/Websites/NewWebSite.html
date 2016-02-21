@@ -1,0 +1,16 @@
+<template name="websiteModal">
+  <div class="modal fade" id="websiteModal">
+    <div class="modal-dialog modal-sm modal-md modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Website add / edit</h4>
+        </div>
+        <div class="new-website-container">
+      		{{> quickForm collection="Websites" id="insertWebsiteForm" type="insert" class="new-website-form"}}
+      		<button class="btn-deny">Cancel</button>
+      	</div>
+
+      </div>
+    </div>
+  </div>
+</template>

@@ -15,10 +15,6 @@ WebsitesIndex = new EasySearch.Index({
   })
 });
 
-console.log("Index:" + WebsitesIndex);
-
-
-
 Websites.allow({
   insert: function(userId, doc){
     return !!userId;

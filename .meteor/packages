@@ -43,3 +43,5 @@ check
 reactive-var
 accounts-facebook
 easy:search
+peppelg:bootstrap-3-modal
+mrt:flash-messages

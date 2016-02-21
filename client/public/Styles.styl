@@ -21,6 +21,7 @@ shadow-level(l = 1)
 // Common Transition
 trans($sec = 0.3s)
     transition: all $sec ease
+
 // Grid
 $xsmall = 340px
 $small = 500px
@@ -35,9 +36,11 @@ light-grey = #EEE
 purp = #524763
 dark-purp = #373142
 red = #E54B4B
+dark-red = #e30505
 teal = #82D8D8
 dark-teal = #66A6A6
 green = #CBE56C
+dark-green = #2a7801
 blue = #16528E
 bright-blue = #0082C8
 maroon = #6A2140
@@ -101,6 +104,26 @@ header
 p
     color #333
 
+input, select, textarea
+    color purp
+    background #FFF
+    border solid 2px light-grey
+    border-radius 2px
+    font-weight 800
+    width 100%
+//    padding 6px 10px
+//    margin-bottom 10px
+    &.static-input
+        border none
+        background transparent
+
+.new-website-form
+    background dark-purp
+    color #FFF
+    font-size 2em
+    text-align center
+    padding 60px
+
 .page-title
     text-transform uppercase
     text-align center
@@ -123,26 +146,6 @@ p
         margin-top 40px
         padding-left $side-nav-large
 
-.new-website-item
-    margin-bottom 20px
-
-.new-website-item-container, .ingredient-listItem
-    position relative
-    background #FFF
-    padding 20px
-    margin-bottom 20px
-    margin-left 20px
-    shadow-level(2)
-    .fa-close
-        position absolute
-        top 0
-        right 0
-        padding 20px
-    label
-        display block
-        margin-bottom 10px
-    textarea, input
-        width 100%
 
 .btn, button
     display inline-block
@@ -161,101 +164,7 @@ p
         background @background - 20
         border-color @background
         shadow-level(2)
-    &.btn-primary
-        background teal
-        border-color teal
-        color dark-purp
-        &:hover
-            background @background - 40
-            border-color @background
-    &.btn-deny
-        background red
-        border solid 3px @background
-        &:hover
-            background @background - 20
-            border-color @background
-    &.btn-text
-        color purp
-        background transparent
-        border solid 2px purp
-        shadow-level(0)
-        &:hover
-            background teal
-            border-color @background
-            shadow-level(1)
-    &.btn-text-dark
-        color #FFF
-        background transparent
-        border solid 2px #FFF
-        shadow-level(0)
-        &:hover
-            background #FFF
-            color dark-purp
-            border-color @background
-            shadow-level(1)
-    &.btn-confirmation
-        color black
-        background green
-        border solid 2px @background
-        &:hover
-            background @background - 20
-            border-color dark-purp
-    &.btn-cancel
-        color #FFF
-        background transparent
-        border solid 2px #FFF
-        opacity 0.4
-        shadow-level(-1)
-        &:hover
-            background red
-            color #FFF
-            opacity 1
-            shadow-level(2)
-            border-color @background
 
-input, select, textarea
-    color purp
-    background #FFF
-    border solid 2px light-grey
-    border-radius 2px
-    font-weight 800
-    width 100%
-    padding 6px 10px
-    margin-bottom 10px
-    &.static-input
-        border none
-        background transparent
-
-.list-group
-    list-style none
-    padding 0
-
-.panel-body
-    .form-group
-        lost-column 1/2
-
-.autoform-remove-item.btn
-    background light-grey
-    box-shadow none
-    border none
-    border-radius 50%
-    font-size 1em
-    height: 25px
-    width: 25px
-    text-align: center
-    display: block
-    padding: 0
-
-.autoform-add-item.btn
-    width 100%
-    border-radius 0
-    border none
-    box-shadow none
-    background light-grey
-
-
-.autoform-remove-item-wrap
-    vertical-align middle
 
 .side-nav
     fixed bottom left
@@ -305,30 +214,34 @@ input, select, textarea
             &:hover, &.active
                 border-left 10px solid teal
 
+
+.container
+    position absolute
+    height 100%
+    width 100%
+    margin-right 0px
+    margin-left 0px
+
+
 .website-item
+    display block
     background #FFF
-    padding 0 20px 20px
+    padding 10px 20px 20px
     margin-bottom 20px
-    margin-left 10px
+    margin-left 5px
     position relative
-    max-height 150px
-    min-height 150px
+    height 200px
     z-index 1
     shadow-level(1)
     trans()
+
+    &:hover
+        shadow-level(4)
+        // animation card 0.6s ease 1 forwards
     .btn-primary
         display block
     .btn-deny
         display none
-    &.in-menu
-        background grey
-        color #FFF
-        h3
-            border-bottom: rgba(255,255,255, 0.6) solid 3px
-        .btn-primary
-            display none
-        .btn-deny
-            display block
     h3
         font-size: 3em;
         opacity: 0.3;
@@ -355,13 +268,28 @@ input, select, textarea
         right 40px
         &:hover
             color blue
-    .ingredient
-        display inline-block
-        margin-right 10px
-        font-size 1.2em
-    &:hover
-        shadow-level(3)
-        // animation card 0.6s ease 1 forwards
+    .vote-down
+        display block
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color red
+        trans()
+        &:hover
+            color dark-red
+            opacity 0.6
+
+    .vote-up
+        display block
+        position: absolute;
+        bottom: 10px;
+        right: 40px;
+        color dark-green
+        trans()
+        &:hover
+            color dark-green
+            opacity 0.6
+
 
 @keyframes card
     0%
@@ -374,26 +302,3 @@ input, select, textarea
     100%
         z-index 10
         transform translate3d(0, 0, 0)
-
-
-.menu-item
-    @extend .website-item
-
-.shopping-list
-    @extend .website-item
-    padding 50px 5%
-    list-style none
-    li
-        font-size 2em
-        padding 20px
-        border-bottom 1px solid light-grey
-        border-top 1px solid light-grey
-        & + li
-            border-top none
-
-.login-buttons-dropdown-align-
-    #login-dropdown-list
-        right 0
-        left auto
-        a
-            color dark-purp

@@ -1,8 +1,8 @@
 <!-- template that displays several website items -->
 <template name="Websites">
-
-
-
+	<div class="flash-messages">
+		  {{> flashMessages}}
+	</div>
 			{{#EasySearch.Each index=websitesindex}}
 		  	 {{> website_item}}
 		  {{/EasySearch.Each}}
@@ -11,8 +11,7 @@
 
 <!-- template that displays individual website entries -->
 <template name="website_item">
-
-	<div class="website-item col-xs-6 col-sm-6 col-md-4 col-lg-3">
+	<div class="website-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
 		<a href="{{url}}">{{title}}</a>
 		<p>
 			{{description}}
@@ -21,11 +20,12 @@
 			By: {{web_author}}
 		</p>
 		<span>{{when}}</span>
-		<a href="#" class="btn btn-default js-upvote">
-			<span class="glyphicon glyphicon-arrow-up" aria-hidden="true">{{upCount}}</span>
+		<a href="#" class="vote-up js-upvote">
+			{{upCount}}
+			<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 		</a>
-		<a href="#" class="btn btn-default js-downvote">
-			<span class="glyphicon glyphicon-arrow-down" aria-hidden="true">{{downCount}}</span>
+		<a href="#" class="vote-down js-downvote">
+			<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">{{downCount}}</span>
 		</a>
 		<!-- you will be putting your up and down vote buttons in here! -->
 
