@@ -13,7 +13,7 @@ Accounts.onCreateUser(function(options, user) {
   console.log("User Creation");
 //  user.firstName = options.firstName;
 //  user.lastName = options.lastName;
-  if (!!user.username) {
+  if (!user.username) {
     user.username = user.emails[0].address;
   }
 

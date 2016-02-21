@@ -12,17 +12,28 @@ Template.Websites.onCreated(function () {
   });
 });
 
+// Search box
+Template.SideNav.helpers({
+		websitesindex: function (){
+			return WebsitesIndex;
+		}
+});
+
+
 // helper function that returns all available websites
 Template.Websites.helpers({
   websites:function(){
     return Websites.find({},{sort: {upCount: -1, downCount: -1}});
-  }
+  },
+  websitesindex: function (){
+			return WebsitesIndex;
+		}
 });
 
 Template.website_item.helpers({
-  author: function(){
+  web_author: function(){
     var post_user = Meteor.users.findOne({ "_id" : this.author});
-    console.log("Post UserId:"+post_user);
+    console.log("Post UserId:"+ post_user.username);
     return post_user.username;
   },
   when: function(){

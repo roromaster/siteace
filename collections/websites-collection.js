@@ -1,5 +1,23 @@
 Websites = new Mongo.Collection('websites');
 
+// search index
+WebsitesIndex = new EasySearch.Index({
+  collection: Websites,
+  fields: ['title', 'description'],
+  engine: new EasySearch.Minimongo({
+    sort: function() {
+      return {
+        upCount: -1,
+        downCount: -1,
+        createOn: -1
+      };
+    }
+  })
+});
+
+console.log("Index:" + WebsitesIndex);
+
+
 
 Websites.allow({
   insert: function(userId, doc){
@@ -60,7 +78,7 @@ WebsiteSchema = new SimpleSchema({
   },
   createdOn: {
     type: Date,
-    label: "Create At",
+    label: "Created At",
     autoValue: function() {
       return new Date()
     },
