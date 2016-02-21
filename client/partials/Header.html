@@ -1,5 +1,15 @@
 <template name="Header">
   <header>
-    <h1>My WebSites List</h1> {{> loginButtons}}
+    <div class="col-xs-6 col-sm-4">
+      <h1 class="title">My WebSites List</h1>
+    </div>
+    <div class="navbar searchbox-container col-xs-6 col-sm-4">
+      <div class="searchbox">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        <span >{{> EasySearch.Input index=websitesindex}} </span>
+      </div>
+
+    </div>
+    {{> loginButtons}}
   </header>
 </template>

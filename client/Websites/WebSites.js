@@ -20,6 +20,14 @@ Template.SideNav.helpers({
 });
 
 
+Template.Header.helpers({
+		websitesindex: function (){
+			return WebsitesIndex;
+		}
+});
+
+
+
 // helper function that returns all available websites
 Template.Websites.helpers({
   websites:function(){

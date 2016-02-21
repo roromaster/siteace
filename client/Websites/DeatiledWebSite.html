@@ -1,0 +1,19 @@
+<template name="DetailedWebSite">
+<div class="container">
+  <div class="detailed-website">
+  <h1><a href="{{website.url}}">{{website.title}}</a></h1>
+  <p>
+    {{website.description}}
+  </p>
+  </div>
+  <div class="comments">
+    {{#each website.comments}}
+      <div class="row">
+              {{comment}}
+      </div>
+
+    {{/each}}
+
+  </div>
+</div>
+</template>

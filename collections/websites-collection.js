@@ -4,6 +4,9 @@ Websites = new Mongo.Collection('websites');
 WebsitesIndex = new EasySearch.Index({
   collection: Websites,
   fields: ['title', 'description'],
+  defaultSearchOptions: {
+  limit: 1000 // could also have skip and props
+},
   engine: new EasySearch.Minimongo({
     sort: function() {
       return {
@@ -27,6 +30,50 @@ Websites.allow({
   }
 });
 
+commentSchema = new SimpleSchema({
+  userid: {
+    type: String,
+    label: "UserID",
+    autoValue: function() {
+      if (!!this.userId)
+      {
+        return this.userId;
+      }
+      else {
+        return "Startup Script";
+      }
+    }
+  },
+  username: {
+    type: String,
+    label: "Username",
+    autoValue: function() {
+      if (!!this.userId)
+      {
+        return this.userId.username;
+      }
+      else {
+        return "Startup Script";
+      }
+    }
+  },
+  comment: {
+    type: String,
+    label: "Comment"
+  },
+  createdOn: {
+    type: Date,
+    label: "Created At",
+    autoValue: function() {
+      return new Date()
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  }
+});
+
+
 WebsiteSchema = new SimpleSchema({
   title: {
     type: String,
@@ -48,6 +95,12 @@ WebsiteSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
+  comments: {
+    type: [commentSchema],
+    autoform: {
+      type: 'hidden'
+    }
+  },
   downCount:{
     type: Number,
     label: "DOWN Count",
@@ -62,10 +115,10 @@ WebsiteSchema = new SimpleSchema({
     autoValue: function() {
       if (!!this.userId)
       {
-        return this.userId
+        return this.userId;
       }
       else {
-        return "Startup Script"
+        return "Startup Script";
       }
     },
     autoform: {
@@ -76,7 +129,17 @@ WebsiteSchema = new SimpleSchema({
     type: Date,
     label: "Created At",
     autoValue: function() {
-      return new Date()
+      return new Date();
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
+  updatedOn: {
+    type: Date,
+    label: "Updated At",
+    autoValue: function() {
+      return new Date();
     },
     autoform: {
       type: 'hidden'
