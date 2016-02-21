@@ -165,6 +165,13 @@ input, select, textarea
         border-color @background
         shadow-level(2)
 
+    &.btn-primary
+        background teal
+        border-color teal
+        color dark-purp
+        &:hover
+            background @background - 40
+            border-color @background
 
 .side-nav
     fixed bottom left
@@ -220,6 +227,14 @@ input, select, textarea
     margin-right 0px
     margin-left 0px
 
+.comment-item
+    display block
+    background #FFF
+    padding 10px 20px 20px
+    margin-bottom 20px
+    margin-left 5px
+    position relative
+    shadow-level(1)
 
 .website-item
     display block

@@ -1,0 +1,27 @@
+
+
+<template name="CommentsTemplate">
+  {{> CommentAddTemplate}}
+  <div class="container">
+    {{#each website.comments}}
+    <div class="row">
+      <div class="comment-item col-lg-6">
+        {{comment}} <br />
+      </div>
+    </div>
+
+    {{/each}}
+  </div>
+
+</template>
+
+
+<template name="CommentAddTemplate">
+  <div class="comment-form">
+    <form class="add-comment-form">
+      <input type="text" name="comment" class="comment-input col-lg-6"/><br>
+      <input type="submit" value="Add" class="btn-primary btn-add-comment"/>
+    </form>
+  </div>
+
+</template>
