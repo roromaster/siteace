@@ -35,7 +35,7 @@ commentSchema = new SimpleSchema({
     type: String,
     label: "UserID",
     autoValue: function() {
-      if (!!this.userId)
+      if (this.userId)
       {
         return this.userId;
       }
@@ -48,9 +48,9 @@ commentSchema = new SimpleSchema({
     type: String,
     label: "Username",
     autoValue: function() {
-      if (!!this.userId)
+      if (this.userId)
       {
-        return this.userId.username;
+        return Meteor.user().username;
       }
       else {
         return "Startup Script";
@@ -97,6 +97,7 @@ WebsiteSchema = new SimpleSchema({
   },
   comments: {
     type: [commentSchema],
+    optional: true,
     autoform: {
       type: 'hidden'
     }
