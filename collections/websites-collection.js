@@ -77,11 +77,13 @@ commentSchema = new SimpleSchema({
 WebsiteSchema = new SimpleSchema({
   title: {
     type: String,
-    label: "Title"
+    label: "Title",
+    optional: true
   },
   description: {
     type: String,
-    label: "Description"
+    label: "Description",
+    optional: true
   },
   url: {
     type: String,
@@ -130,7 +132,9 @@ WebsiteSchema = new SimpleSchema({
     type: Date,
     label: "Created At",
     autoValue: function() {
-      return new Date();
+      if (this.isInsert) {
+        return new Date();
+      }
     },
     autoform: {
       type: 'hidden'
@@ -139,8 +143,11 @@ WebsiteSchema = new SimpleSchema({
   updatedOn: {
     type: Date,
     label: "Updated At",
+    optional: true,
     autoValue: function() {
-      return new Date();
+      if (this.isUpdate) {
+        return new Date();
+      }
     },
     autoform: {
       type: 'hidden'

@@ -45,3 +45,9 @@ accounts-facebook
 easy:search
 peppelg:bootstrap-3-modal
 mrt:flash-messages
+mrt:cheerio
+http
+meteorhacks:npm
+
+
+npm-container
