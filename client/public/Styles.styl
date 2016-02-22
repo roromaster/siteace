@@ -149,15 +149,15 @@ input, select, textarea
 
 .btn, button
     display inline-block
-    cursor pointer
+    // cursor pointer
     background purp
     color #FFF
-    text-decoration none
-    text-transform uppercase
-    padding 5px 15px
-    border solid 3px purp
-    border-radius 2px
-    font-weight 800
+    // text-decoration none
+    // text-transform uppercase
+    // padding 5px 15px
+    // border solid 3px purp
+    // border-radius 2px
+    // font-weight 800
     shadow-level(1)
     trans()
     &:hover
@@ -172,7 +172,8 @@ input, select, textarea
         &:hover
             background @background - 40
             border-color @background
-
+    &.btn-add-comment
+        align left
 .side-nav
     fixed bottom left
     height 100px
@@ -229,6 +230,7 @@ input, select, textarea
 
 .comment-item
     display block
+    user-select: none;
     background #FFF
     padding 10px 20px 20px
     margin-bottom 20px
