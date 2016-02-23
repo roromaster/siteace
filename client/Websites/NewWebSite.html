@@ -5,42 +5,40 @@
         <div class="modal-header">
           <h4 class="modal-title">Website add / edit</h4>
         </div>
-        <div class="new-website-container">
-      		<!-- {{> quickForm collection="Websites" id="addWebsiteForm" type="insert" class="new-website-form"}} -->
           {{> addWebSiteForm}}
-      	</div>
       </div>
     </div>
   </div>
 </template>
 
-
 <template name="addWebSiteForm">
-  <form class="form-horizontal add-website-form">
-    <div class="form-group">
-      <div class="col-sm-10">
-        <label for="url">URL:</label>
-        <input type="text" id="url" name="url" class="form-control" placeholder="URL of your site">
+  <form class="form-horizontal add-website-form" id="add-website-form" role="form">
+    <div class="row">
+      <div class="form-group has-feedback">
+        <label class="control-label" for="url">URL:</label>
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input class="form-control input-lg" type="url" id="url" name="url" />
+          <span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-10">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="Title" class="form-control" placeholder="Title">
+      <div class="form-group has-feedback">
+        <label for="title" class="control-label">Title:</label>
+        <input type="text" id="title" name="title" class="form-control " placeholder="Title" />
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-10">
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="Description" class="form-control" placeholder="Description">
+      <div class="form-group has-feedback">
+        <label for="description" class="col-sm-2 control-label">Description:</label>
+        <textarea id="description" name="description" class="form-control" placeholder="Description"></textarea>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
       </div>
-    </div>
-    <div class="form-group ">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="form-group">
         <button type="submit" value="Add" class="btn btn-primary btn-add-site">Submit</button>
-        <button class="btn-deny" value="Cancel" name="Cancel">Cancel</button>
+        <button type="button" class="btn btn-deny">Cancel</button>
       </div>
-    </div>
-  </form>
 
+    </div>
+
+
+  </form>
 </template>

@@ -1,19 +1,44 @@
-Template.websiteModal.events({
 
+
+Template.addWebSiteForm.onRendered(function() {
+  console.log("OnRendered");
+
+  $("#add-website-form").validate({
+    rules: {
+      url: {
+        required: true
+      },
+      title: {
+        required: true
+      },
+      description: {
+        required: true
+      }
+    },
+    highlight: function(element) {
+
+      $(element).next('.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      console.log("Valide KO");
+    },
+    success: function(element) {
+      console.log("Valide Ok");
+      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+      $(element).next('.glyphicon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+    }
+  });
 });
 
 
 Template.addWebSiteForm.events({
 
-  "submit .add-website-form": function(event, template){
+  "click .btn-deny": function(event,template){
+    console.log("Canceled");
+      Modal.hide(websiteModal);
+  },
+  "submit form": function(event, template){
     console.log("Submit new Website");
     event.preventDefault();
-
-    if (event.target.Cancel == "Cancel"){
-        console.log("Canceled");
-        Modal.hide(websiteModal);
-    }
-    else {
 
     // Get value from form element
     var url = event.target.url.value;
@@ -22,15 +47,15 @@ Template.addWebSiteForm.events({
 
     console.log(url + title + description);
 
+
     Websites.insert({url: url, title: title, description: description});
 
-    event.target.title.value = "";
-    event.target.url.value="";
-    event.target.description.value="";
+    // event.target.title.value = "";
+    // event.target.url.value="";
+    // event.target.description.value="";
     Modal.hide(websiteModal);
     console.log("Success Insert");
     FlashMessages.sendSuccess('New Website added !!');
-  }
 
   },
   "blur #url": function(event){
