@@ -25,7 +25,16 @@ Template.addWebSiteForm.onRendered(function() {
       console.log("Valide Ok");
       $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
       $(element).next('.glyphicon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
-    }
+    },
+    errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.length) {
+                error.insertAfter(element);
+            } else {
+            error.insertAfter(element);
+            }
+        } 
   });
 });
 

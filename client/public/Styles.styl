@@ -71,11 +71,11 @@ social = {
 $side-nav = 100px
 $side-nav-large = 200px
 
-html
-    box-sizing: border-box
-
-*, *:before, *:after
-    box-sizing: inherit
+// html
+//     box-sizing: border-box
+//
+// *, *:before, *:after
+//     box-sizing: inherit
 
 body
     background light-grey
@@ -110,15 +110,17 @@ input, select, textarea
     border solid 2px light-grey
     border-radius 2px
     font-weight 800
-    width 100%
+    width 80%
     padding 6px 10px
-    margin-bottom 10px
+    margin-bottom 5px
     &.static-input
         border none
         background transparent
 
 .add-website-form
-    padding 60px
+    display block
+    position relative
+    padding 30px
 
 .page-title
     text-transform uppercase
@@ -141,6 +143,7 @@ input, select, textarea
     +above($large)
         margin-top 40px
         padding-left $side-nav-large
+
 
 
 .btn, button
