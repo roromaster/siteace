@@ -1,7 +1,5 @@
 Template.websiteModal.events({
-  "click .btn-deny": function(event, template){
-    Modal.hide(websiteModal);
-  }
+
 });
 
 
@@ -9,10 +7,16 @@ Template.websiteModal.events({
 
 
 Template.addWebSiteForm.events({
+
   "submit .add-website-form": function(event, template){
     console.log("Submit new Website");
-
     event.preventDefault();
+
+    if (event.target.Cancel == "Cancel"){
+        console.log("Canceled");
+        Modal.hide(websiteModal);
+    }
+    else {
 
     // Get value from form element
     var url = event.target.url.value;
@@ -29,6 +33,7 @@ Template.addWebSiteForm.events({
     Modal.hide(websiteModal);
     console.log("Success Insert");
     FlashMessages.sendSuccess('New Website added !!');
+  }
 
   },
   "blur #url": function(event){
@@ -45,18 +50,3 @@ Template.addWebSiteForm.events({
       });
   }
 });
-
-// AutoForm.addHooks('addWebsiteForm', {
-//   onSuccess: function(operation, result, template) {
-//     console.log("Success Insert");
-//     FlashMessages.sendSuccess('New Website added !!');
-//     Modal.hide(websiteModal);
-//   },
-//   before: {
-//     insert: function(doc) {
-//       console.log("Submitting new Website");
-//
-//         console.log(auto_form);
-//       }
-//     }
-//   }, true);
