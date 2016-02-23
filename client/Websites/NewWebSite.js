@@ -3,9 +3,6 @@ Template.websiteModal.events({
 });
 
 
-
-
-
 Template.addWebSiteForm.events({
 
   "submit .add-website-form": function(event, template){
