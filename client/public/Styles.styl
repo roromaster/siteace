@@ -152,19 +152,18 @@ input, select, textarea
     // cursor pointer
     background purp
     color #FFF
-    // text-decoration none
-    // text-transform uppercase
-    // padding 5px 15px
-    // border solid 3px purp
-    // border-radius 2px
-    // font-weight 800
+    text-decoration none
+    text-transform uppercase
+    padding 5px 15px
+    border solid 3px purp
+    border-radius 2px
+    font-weight 800
     shadow-level(1)
     trans()
     &:hover
         background @background - 20
         border-color @background
         shadow-level(2)
-
     &.btn-primary
         background teal
         border-color teal
@@ -172,8 +171,51 @@ input, select, textarea
         &:hover
             background @background - 40
             border-color @background
-    &.btn-add-comment
-        align left
+    &.btn-deny
+        background red
+        border solid 3px @background
+        &:hover
+            background @background - 20
+            border-color @background
+    &.btn-text
+        color purp
+        background transparent
+        border solid 2px purp
+        shadow-level(0)
+        &:hover
+            background teal
+            border-color @background
+            shadow-level(1)
+    &.btn-text-dark
+        color #FFF
+        background transparent
+        border solid 2px #FFF
+        shadow-level(0)
+        &:hover
+            background #FFF
+            color dark-purp
+            border-color @background
+            shadow-level(1)
+    &.btn-confirmation
+        color black
+        background green
+        border solid 2px @background
+        &:hover
+            background @background - 20
+            border-color dark-purp
+    &.btn-cancel
+        color #FFF
+        background transparent
+        border solid 2px #FFF
+        opacity 0.4
+        shadow-level(-1)
+        &:hover
+            background red
+            color #FFF
+            opacity 1
+            shadow-level(2)
+            border-color @background
+
 .side-nav
     fixed bottom left
     height 100px
