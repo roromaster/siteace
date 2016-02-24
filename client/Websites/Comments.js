@@ -5,6 +5,7 @@ Template.CommentsTemplate.onCreated(function () {
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
      self.subscribe('singleWebSite',id);
+     self.subscribe('comments',id);
   });
 });
 
@@ -12,6 +13,12 @@ Template.CommentsTemplate.helpers({
   website: ()=> {
     var id = FlowRouter.getParam('id');
     return Websites.findOne({_id: id});
+  },
+  comments: ()=> {
+    return Comments.find({},{sort: {createdOn: -1}});
+  },
+  when: function(date){
+      return date.toLocaleDateString();
   }
 });
 
@@ -27,24 +34,26 @@ Template.CommentAddTemplate.events({
 
     // Get value from form element
     var comment = event.target.comment.value;
-    var comments = website.comments;
-
-    if (!comments)
-    {
-      comments = []
-    }
-
-
-    console.log(comment);
-    console.log(comments);
-    console.log(website);
-    // Insert a task into the collection
-    comment = {comment: comment};
-    comments.unshift(comment);
-    console.log(comments);
-    Websites.update(
-      {_id:id},
-      {$set:{comments: comments}});
+    Comments.insert({websiteid:id, comment:comment});
+    // var comments = website.comments;
+    //
+    // if (!comments)
+    // {
+    //   comments = []
+    // }
+    //
+    //
+    // console.log(comment);
+    // console.log(comments);
+    // console.log(website);
+    // // Insert a task into the collection
+    // comment = {comment: comment};
+    // comments.unshift(comment);
+    // console.log(comments);
+    //
+    // Websites.update(
+    //   {_id:id},
+    //   {$set:{comments: comments}});
     //Clear Form
     event.target.comment.value = "";
   }

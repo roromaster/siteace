@@ -1,4 +1,5 @@
 Websites = new Mongo.Collection('websites');
+Comments = new Mongo.Collection('comments');
 
 // search index
 WebsitesIndex = new EasySearch.Index({
@@ -27,6 +28,66 @@ Websites.allow({
   },
   remove: function(userId, doc){
     return !!userId;
+  }
+});
+
+Comments.allow({
+  insert: function(userId, doc){
+    return !!userId;
+  },
+  update: function(userId, doc){
+    return !!userId;
+  },
+  remove: function(userId, doc){
+    return !!userId;
+  }
+});
+
+commentSchema2 = new SimpleSchema({
+  comment: {
+    type: String,
+  },
+  createdOn: {
+    type: Date,
+    label: "Created At",
+    autoValue: function() {
+      return new Date()
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
+  websiteid: {
+    type: String,
+    autoform: {
+      type: 'hidden'
+    }
+  },
+  userid: {
+    type: String,
+    label: "UserID",
+    autoValue: function() {
+      if (this.userId)
+      {
+        return this.userId;
+      }
+      else {
+        return "Startup Script";
+      }
+    }
+  },
+  username: {
+    type: String,
+    label: "Username",
+    autoValue: function() {
+      if (this.userId)
+      {
+        return Meteor.user().username;
+      }
+      else {
+        return "Startup Script";
+      }
+    }
   }
 });
 
@@ -71,6 +132,7 @@ commentSchema = new SimpleSchema({
       type: 'hidden'
     }
   }
+
 });
 
 
@@ -157,3 +219,4 @@ WebsiteSchema = new SimpleSchema({
 
 
 Websites.attachSchema(WebsiteSchema);
+Comments.attachSchema(commentSchema2);

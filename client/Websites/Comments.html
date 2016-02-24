@@ -1,34 +1,27 @@
-
-
 <template name="CommentsTemplate">
-  <div class="container">
-      {{> CommentAddTemplate}}
-
-    {{#each website.comments}}
-    <div class="row">
-      <!-- <div class="comment-item col-lg-6"> -->
-      <textarea readonly class="comment-item col-lg-6" > {{comment}}</textarea>
-      <!-- </div> -->
+  {{> CommentAddTemplate}} {{#each comments}}
+  <div class="panel panel-default col-lg-8">
+    <div class="panel-body">
+      {{comment}}
     </div>
-
-    {{/each}}
+    <div class="panel-footer text-right">
+      {{username}} &nbsp;·&nbsp; {{when createdOn}}
+    </div>
   </div>
-
+  {{/each}}
 </template>
 
 
+
 <template name="CommentAddTemplate">
-<form class="form-horizontal add-comment-form">
-  <div class="form-group">
-    <div class="col-lg-6">
-        <!-- <input type="text" name="comment" class="form-control" placeholder="Write a comment"> -->
-        <textarea name="comment" class="form-control" rows="5" cols="20"></textarea>
+  <form class="form-horizontal add-comment-form">
+    <div class="form-group">
+      <div class="col-lg-6">
+      <textarea name="comment" class="form-control" rows="5" cols="20"></textarea>
+      </div>
     </div>
-  </div>
-  <div class="form-group ">
-        <button type="submit" value="Add" class="btn btn-primary btn-add-comment">Add</button>
-  </div>
-</form>
-
-
+    <div class="form-group ">
+      <button type="submit" value="Add" class="btn btn-primary btn-add-comment">Add</button>
+    </div>
+  </form>
 </template>

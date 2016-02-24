@@ -2,6 +2,10 @@ Meteor.publish('websites', function(){
   return Websites.find({});
 });
 
+Meteor.publish('comments', function(id){
+  return Comments.find({websiteid: id});
+});
+
 Meteor.publish('singleWebSite', function(id){
   check(id, String);
   return Websites.find({_id: id});
@@ -17,7 +21,6 @@ try {
    if (!user.username) {
      user.username = user.emails[0].address;
    }
-
 }
 catch (e){
   console.log("Error user");
