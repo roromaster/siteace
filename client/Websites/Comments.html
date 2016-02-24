@@ -1,12 +1,20 @@
 <template name="CommentsTemplate">
-  {{> CommentAddTemplate}} {{#each comments}}
-  <div class="panel panel-default">
-    <div class="panel-body">
-      {{comment}}
+  {{> CommentAddTemplate}}
+  <p>
+    {{count}} Comments:
+  </p>
+
+  {{#each comments}}
+  <div class="row col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{comment}}
+      </div>
+      <div class="panel-footer text-right">
+        {{username}} &nbsp;·&nbsp; {{when createdOn}}
+      </div>
     </div>
-    <div class="panel-footer text-right">
-      {{username}} &nbsp;·&nbsp; {{when createdOn}}
-    </div>
+
   </div>
   {{/each}}
 </template>

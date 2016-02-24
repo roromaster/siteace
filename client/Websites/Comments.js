@@ -19,6 +19,9 @@ Template.CommentsTemplate.helpers({
   },
   when: function(date){
       return date.toLocaleDateString();
+  },
+  count: function(){
+    return Comments.find({}).count();
   }
 });
 

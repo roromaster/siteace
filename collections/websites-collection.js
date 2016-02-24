@@ -4,7 +4,7 @@ Comments = new Mongo.Collection('comments');
 // search index
 WebsitesIndex = new EasySearch.Index({
   collection: Websites,
-  fields: ['title', 'description'],
+  fields: ['url','title', 'description'],
   defaultSearchOptions: {
   limit: 1000 // could also have skip and props
 },
