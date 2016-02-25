@@ -11,6 +11,10 @@ Meteor.publish('singleWebSite', function(id){
   return Websites.find({_id: id});
 });
 
+Meteor.publish("Users", function(argument){
+  return Meteor.users.find();
+});
+
 
 //This should be in the server directory
 Accounts.onCreateUser(function(options, user) {

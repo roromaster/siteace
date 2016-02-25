@@ -1,6 +1,10 @@
 
 
 Meteor.methods({
+		getUsername:function(id){
+			var post_user = Meteor.users.findOne({_id : id});
+			return post_user.username;
+		},
 		requestWebsite:function(url){
 			try {
 				console.log("making the request to "+url);

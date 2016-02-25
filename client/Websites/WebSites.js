@@ -9,6 +9,7 @@ Template.Websites.onCreated(function () {
   var self = this;
   self.autorun(function() {
      self.subscribe('websites');
+     self.subscribe('Users');
   });
 });
 
@@ -40,9 +41,9 @@ Template.Websites.helpers({
 
 Template.website_item.helpers({
   web_author: function(){
-    var post_user = Meteor.users.findOne({ "_id" : this.author});
-    console.log("Post UserId:"+ post_user.username);
+    var post_user = Meteor.users.findOne({_id : this.author});
     return post_user.username;
+
   },
   when: function(){
     return this.createdOn.toLocaleDateString();

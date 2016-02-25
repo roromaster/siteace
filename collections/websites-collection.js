@@ -178,14 +178,15 @@ WebsiteSchema = new SimpleSchema({
     type: String,
     label: "Author",
     autoValue: function() {
+      if (this.isInsert) {
       if (!!this.userId)
       {
         return this.userId;
       }
       else {
-        return "Startup Script";
+        return this.value;
       }
-    },
+    }},
     autoform: {
       type: 'hidden'
     }

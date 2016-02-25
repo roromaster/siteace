@@ -1,9 +1,9 @@
 <!-- template that displays several website items -->
 <template name="Websites">
 <div class="container">
-	<row> <div class="flash-messages">
+<div class="flash-messages row">
 		  {{> flashMessages}}
-	</div></row>
+	</div>
 
 			{{#EasySearch.Each index=websitesindex}}
 		  	 {{> website_item}}
@@ -13,25 +13,28 @@
 
 <!-- template that displays individual website entries -->
 <template name="website_item">
-	<a href="/websites/{{_id}}">
-	<div class="website-item col-xs-12 col-md-10 col-lg-10">
-		<a href="{{url}}">{{title}}</a>
-		<textarea rows="3" readonly class="website-description">
-			{{description}}
-		</textarea>
-		<p>
-			By: {{web_author}}
-		</p>
-		<span>{{when}}</span>
-		<a href="#" class="vote-up js-upvote">
-			{{upCount}}
-			<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-		</a>
-		<a href="#" class="vote-down js-downvote">
-			<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">{{downCount}}</span>
-		</a>
-		<!-- you will be putting your up and down vote buttons in here! -->
+	<div class="row">
+		<a href="/websites/{{_id}}">
+		<div class="website-item col-xs-12 col-md-10 col-lg-10">
+			<h2><a href="{{url}}">{{title}}</a></h2>
+			<textarea rows="3" readonly class="website-description">
+				{{description}}
+			</textarea>
+			<p>
+				By: {{web_author}}
+			</p>
+			<span>{{when}}</span>
+			<a href="#" class="vote-up js-upvote">
+				{{upCount}}
+				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+			</a>
+			<a href="#" class="vote-down js-downvote">
+				<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">{{downCount}}</span>
+			</a>
+			<!-- you will be putting your up and down vote buttons in here! -->
 
+		</div>
+		</a>
 	</div>
-	</a>
+
 </template>

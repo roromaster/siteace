@@ -3,180 +3,53 @@
 // start up function that creates entries in the Websites databases.
 Meteor.startup(function () {
   // code to run on server at startup
-  
+  // sets locale to de
+  faker.locale = "en";
+  // Create in 25 fake users.
+
+      // If the user count ever falls below 25 this code will
+      // make sure that you ALWAYS have 25 fresh users to
+      // do with what you will. Be sure to place this
+      // in your Meteor.startup or a Tracker.deps block
+      if(Meteor.users.find().count() < 25){
+        _.each(_.range(25), function(){
+          var randomEmail = faker.internet.email();
+          var randomName = faker.name.findName();
+          var userName = faker.internet.userName();
+          Accounts.createUser({
+            username: userName,
+            profile: {
+              name: randomName,
+            },
+            email: randomEmail,
+            password: 'password'
+          });
+        });
+      }
+      var userCount = Meteor.users.find().count();
 
 
-  if (!Websites.findOne()){
+
+
+
+  if (Websites.find({}).count() < 30){
     console.log("No websites yet. Creating starter data.");
-
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
-    });
-
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
-    });
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
-    });
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
-    });
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
-    });
-    Websites.insert({
-      title:"Goldsmiths Computing Department",
-      url:"http://www.gold.ac.uk/computing/",
-      author:"Startup Script",
-      description:"This is where this course was developed."
-
-    });
-
-     Websites.insert({
-      title:"University of London",
-      url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
-      author:"Startup Script",
-      description:"University of London International Programme."
-    });
-
-     Websites.insert({
-      title:"Coursera",
-      url:"http://www.coursera.org",
-      author:"Startup Script",
-      description:"Universal access to the world’s best education."
-    });
-
-    Websites.insert({
-      title:"Google",
-      url:"http://www.google.com",
-      author:"Startup Script",
-      description:"Popular search engine."
+    _.each(_.range(30), function() {
+      // Function to fill in websites and comments
+      var RandomUserNumber = Math.floor(Math.random() * userCount);
+      var randomTitle = faker.fake('{{lorem.sentence}}');
+      var randomUrl = faker.fake('{{internet.url}}');
+      var randomUser = (Meteor.users.findOne({},{skip:RandomUserNumber}))._id;
+      var randomDescription = faker.fake('{{lorem.paragraph}}');
+      console.log('Title:' + randomTitle + '/n Url:'+ randomUrl
+        + '/n UserNum'+ RandomUserNumber +'/n UserID:'
+        + randomUser +'/n Decription'+ randomDescription);
+      Websites.insert({
+        title:randomTitle,
+        url:randomUrl,
+        author:randomUser,
+        description:randomDescription
+      });
     });
   }
 });
