@@ -1,43 +1,48 @@
 <template name="websiteModal">
   <div class="modal fade" id="websiteModal">
-    <div class="modal-dialog modal-sm modal-md modal-lg">
+    <div class="modal-dialog modal-xs modal-sm modal-md">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Website add / edit</h4>
         </div>
-        {{> addWebSiteForm}}
+        <div class="modal-body">
+            {{> addWebSiteForm}}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <template name="addWebSiteForm">
-  <form class="form-horizontal add-website-form" id="add-website-form" role="form">
-      <div class="form-group has-feedback">
+<form class="form-horizontal add-website-form" id="add-website-form" role="form">
 
-        <div>
-            <label class="control-label" for="url">URL:</label>
-        </div>
-        <div>
-          <input class="form-control" type="url" id="url" name="url" placeholder="Type in your URL">
-          <span><i class="fa fa-spinner fa-pulse"></i></span>
-          <span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 
-        </div>
-      </div>
-      <div class="form-group has-feedback">
-        <label for="title" class="control-label col-sm-2">Title:</label>
-        <input type="text" id="title" name="title" class="form-control " placeholder="Title" />
-        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <label for="description" class="control-label">Description:</label>
-        <textarea id="description" name="description" class="form-control" placeholder="Description"></textarea>
-        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-      </div>
-      <div class="form-group">
-        <button type="submit" value="Add" class="btn btn-primary btn-add-site">Submit</button>
-        <button type="button" class="btn btn-deny">Cancel</button>
-      </div>
-  </form>
+
+  <div class="form-group has-feedback">
+    <label class="control-label" for="url">URL:</label>
+    <input class="form-control" type="url" id="url" name="url" placeholder="Type in your URL"/>
+    <span class="glyphicon form-control-feedback"></span>
+  </div>
+
+  <div class="form-group has-feedback">
+    <label for="title" class="control-label">Title:</label>
+    <div>
+      <input type="text" id="title" name="title" class="form-control " placeholder="Title" />
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group has-feedback">
+    <label for="description" class="control-label">Description:</label>
+    <div>
+      <textarea id="description" name="description" class="form-control" placeholder="Description"></textarea>
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" value="Add" class="btn btn-primary btn-add-site">Submit</button>
+    <button type="button" class="btn btn-deny">Cancel</button>
+  </div>
+</form>
 </template>
