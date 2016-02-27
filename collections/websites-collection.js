@@ -1,5 +1,7 @@
 Websites = new Mongo.Collection('websites');
 Comments = new Mongo.Collection('comments');
+Keywords = new Mongo.Collection('keywords');
+
 
 // search index
 WebsitesIndex = new EasySearch.Index({
@@ -43,6 +45,28 @@ Comments.allow({
   }
 });
 
+Keywords.allow({
+  insert: function(userId, doc){
+    return !!userId;
+  },
+  update: function(userId, doc){
+    return !!userId;
+  },
+  remove: function(userId, doc){
+    return !!userId;
+  }
+});
+
+keywordSchema = new SimpleSchema({
+  keyword: {
+    type: String
+  },
+  siteID: {
+    type: String
+  }
+});
+
+
 commentSchema2 = new SimpleSchema({
   comment: {
     type: String,
@@ -51,7 +75,7 @@ commentSchema2 = new SimpleSchema({
     type: Date,
     label: "Created At",
     autoValue: function() {
-      return new Date()
+      return new Date();
     },
     autoform: {
       type: 'hidden'
@@ -126,7 +150,7 @@ commentSchema = new SimpleSchema({
     type: Date,
     label: "Created At",
     autoValue: function() {
-      return new Date()
+      return new Date();
     },
     autoform: {
       type: 'hidden'
@@ -221,3 +245,4 @@ WebsiteSchema = new SimpleSchema({
 
 Websites.attachSchema(WebsiteSchema);
 Comments.attachSchema(commentSchema2);
+Keywords.attachSchema(keywordSchema);

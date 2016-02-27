@@ -1,8 +1,6 @@
 <!-- template that displays several website items -->
 <template name="Websites">
-		<div class="flash-messages row col-lg-4 align-right">
-		  {{> flashMessages}}
-		</div>
+		
 		{{#EasySearch.Each index=websitesindex}}
 		  {{> website_item}}
 		{{/EasySearch.Each}}

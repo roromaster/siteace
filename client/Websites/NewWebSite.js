@@ -56,6 +56,7 @@ Template.addWebSiteForm.events({
 
     console.log(url + title + description);
 
+    Meteor.call("insertNewSite",url,title,description);
 
     Websites.insert({url: url, title: title, description: description});
 
@@ -69,15 +70,10 @@ Template.addWebSiteForm.events({
   },
   "blur #url": function(event){
     var url = event.currentTarget.value;
-    var auto_form = Meteor.call("requestWebsite", url, function(error, result) {
-        if (error) {
-          console.log("error", error);
-        }
-        if (result) {
-          console.log("result received!");
+    var auto_form = Meteor.call("requestWebsite", url, function(error,result) {
+      console.log("result received!" + result);
           $('#title').val(result.title);
           $('#description').val(result.description);
-        }
       });
   }
 });
