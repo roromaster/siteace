@@ -34,7 +34,7 @@ Template.addWebSiteForm.onRendered(function() {
             } else {
             error.insertAfter(element);
             }
-        } 
+        }
   });
 });
 
