@@ -2,6 +2,28 @@ Websites = new Mongo.Collection('websites');
 Comments = new Mongo.Collection('comments');
 Keywords = new Mongo.Collection('keywords');
 
+AdminConfig = {
+  name: 'Website Aggregator',
+  adminEmails: ['roromaster@gmail.com', 'admin@admin.com'],
+  collections: {
+    Websites: {
+      icon: 'cloud',
+      tableColumns: [
+        { label: 'Title', name: 'title' },
+        { label: 'Created', name: 'createdOn' }
+  ]},
+    Comments: {
+      icon: 'comment'
+    },
+    Keywords: {
+      icon: 'heart',
+      tableColumns: [
+        {label: 'Word', name:'keyword'},
+        {label: 'SideID', name:'siteID'}
+      ]
+    }
+  }
+};
 
 // search index
 WebsitesIndex = new EasySearch.Index({

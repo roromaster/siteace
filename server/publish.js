@@ -16,6 +16,7 @@ Meteor.publish("Users", function(argument){
 });
 
 
+
 //This should be in the server directory
 Accounts.onCreateUser(function(options, user) {
   console.log("User Creation");
