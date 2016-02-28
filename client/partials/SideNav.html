@@ -8,6 +8,11 @@
       <li>
         <a href="/Favorites"> <i class="fa fa-map-o"></i> Favorites</a>
       </li>
+      {{#if isInRole 'admin'}}
+      <li>
+        <a href="/admin"><i class="fa fa-cogs"></i>Admin</a>
+      </li>
+      {{/if}}
       <li>
         <div class="text-center">
           <button type="button" class="add_website ">Add WebSites</button>
