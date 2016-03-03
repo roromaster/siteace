@@ -4,7 +4,7 @@ accounts-oauth@1.1.8
 accounts-password@1.1.4
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
-alanning:roles@1.2.14
+alanning:roles@1.2.15
 aldeed:autoform@5.8.1
 aldeed:collection2@2.9.0
 aldeed:collection2-core@1.1.0
@@ -75,7 +75,7 @@ mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
 meteorhacks:async@1.0.0
-meteorhacks:kadira@2.27.3
+meteorhacks:kadira@2.28.2
 meteorhacks:meteorx@1.4.1
 meteorhacks:npm@1.5.0
 meteorhacks:unblock@1.1.0
