@@ -1,6 +1,6 @@
 <!-- template that displays several website items -->
 <template name="Websites">
-		
+
 		{{#EasySearch.Each index=websitesindex}}
 		  {{> website_item}}
 		{{/EasySearch.Each}}
@@ -27,6 +27,7 @@
 					<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">{{downCount}}</span>
 				</a>
 			</div>
+
 	</div>
 	</a>
 </template>
